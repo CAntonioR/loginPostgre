@@ -1,16 +1,17 @@
 import { IsAlphanumeric, IsEmail, IsNotEmpty, Matches, MinLength } from "class-validator";
 
 const passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,50}$/;
+const emailRegex = /\S+@\S+\.\S+/;
 export class CreateUserDto {
     @IsNotEmpty()
     @MinLength(3, { message: 'Username must have atleast 3 characters.' })
-    @IsAlphanumeric(null, {
+    @IsAlphanumeric('es-ES', {
         message: 'Username does not allow other than alpha numeric chars.',
     })
     username: string;
 
     @IsNotEmpty()
-    @IsEmail(null, { message: 'Please provide valid Email.' })
+    @IsEmail({}, { message: 'Please provide valid Email.' })
     email: string;
 
     @IsNotEmpty()

@@ -2,8 +2,7 @@ import { Body, Controller, Get, NotFoundException, Post, Request, UseGuards } fr
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guard/local-auth.guard';
 import { JwtAuthGuard } from './guard/jwt-auth.guard';
-// import { Request } from 'express';
-import * as passport from 'passport';
+
 
 @Controller('auth')
 export class AuthController {
@@ -21,11 +20,6 @@ export class AuthController {
         }
         return this.authService.signIn(email, password);
     }
-
-    // @Post('register')
-    // async register(@Request() req) {
-    //     return this.authService.register(req);
-    // }
 
     @UseGuards(JwtAuthGuard)
     @Get('profile')

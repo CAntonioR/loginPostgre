@@ -8,7 +8,6 @@ import { AuthModule } from './auth/auth.module';
 import * as cors from 'cors';
 import helmet from 'helmet';
 import { ExpressSessionMiddleware } from '@nest-middlewares/express-session';
-import session from 'express-session';
 require('dotenv').config();
 
 @Module({
